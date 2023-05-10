@@ -1,7 +1,7 @@
 [
    {
-       "Name":"......",
-       "Description":".....",
+       "Name":"Update 0.1",
+       "Description":"Demo build",
        "IconUrl":"......"
    },
 
