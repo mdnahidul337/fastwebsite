@@ -12,7 +12,7 @@
    },
    
    {
-       "Name":"......",
+       "Name":"Update 0.3",
        "Description":".....",
        "IconUrl":"......"
    }
