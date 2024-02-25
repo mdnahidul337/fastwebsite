@@ -1,137 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Web Development</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js"></script>
+  <title>Proxy Server</title>
 </head>
+
 <body>
-    <!--here to start-->
-    <div class="hero">
-        <nav>
-            <h3>Web Develop<span>ment</span></h3>
-            <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">About Us</a></li>
-                <li><a href="#">Services</a></li>
-                <li><a href="#">Skills</a></li>
-                <li><a href="#">Contact Us</a></li>
-            </ul>
-            <a href="#" class="btn">Subscribe</a>
-        </nav>
-
-        <div class="content">
-            <h4>Hello, my name is</h4>
-            <h1>Md Nahidul <span>Islam</span></h1>
-            <h3>I'am a Web Developer.</h3>
-            <div class="newslatter">
-                <form>
-                    <input type="email" name="Email" id="mail" placeholder="Enter Your Email">
-                    <input type="submit" name="submit" value="Lets Start" >
-                </form>
-            </div>
-        </div>
+  <div class="container">
+    <h2>Proxy Server</h2>
+    <div class="textbox-container">
+      <input type="text" placeholder="Type or paste text here">
+      <button onclick="copyText(this)">Copy to Clipboard</button>
     </div>
-    <!--here about section start-->
-    <section class="about">
-        <div class="main">
-            <img src="image/13.jpg">
-            <div class="about-text">
-                <h2>About Me</h2>
-            <div class="container">
-          <!--      <h5><span class="text first-text">I'am a</span></h5>-->
-                <h5><span class="text sce-text">Web Developer</span></h5>
-            </div><br>
-                <br><p>about me all details</p>
-                <button type="button">Let's Talk</button>
-            </div>
-        </div>
-    </section>
-    <!--animation text script-->
-    <script>
-        const text = document.querySelector(".sec-text");
+    <!-- Repeat the textbox-container div 49 more times -->
+    <!-- You can also generate these dynamically using JavaScript if needed -->
 
-        const textLoad = () => {
-            setTimeout(() =>{
-                text.textContent = "Freelancer";
-            }, 0);
-            setTimeout(() =>{
-                text.textContent = "Web Developer";
-            }, 4000);
-            setTimeout(() =>{
-                text.textContent = "YouTuber";
-            }, 8000);
-        }
+    <button onclick="addTextBox()">Add TextBox</button>
+    <button onclick="exportData()">Export Data</button>
+    <input type="file" id="importFile" style="display: none;" onchange="importData(event)">
+    <button onclick="document.getElementById('importFile').click()">Import Data</button>
+    <button id="btnd" onclick="toggleDarkMode()">Toggle Dark Mode</button>
+  </div>
 
-        textLoad();
-    </script>
-    <!--Service section start-->
-<div class="Service">
-    <div class="title">
-         <H2>Our Services</H2>
-    </div>
-
-    <div class="box">
-        <div class="card">
-            <i class="fa-solid fa-bars"></i>
-            <h5>Web Development</h5>
-            <div class="pra">
-               <p>Every website should be built with tow primary goals: Firstly, it needs
-                to work across all devices. Secondly, it needs to be fast as possible</p> 
-
-                <p style="text-align: center;">
-                    <a class="button" href="#">Read More</a>
-               </p>
-            </div>
-        </div>
-
-        <div class="card">
-            <i class="fa-regular fa-user"></i>
-            <h5>Web Development</h5>
-            <div class="pra">
-               <p>Every website should be built with tow primary goals: Firstly, it needs
-                to work across all devices. Secondly, it needs to be fast as possible</p> 
-
-                <p style="text-align: center;">
-                    <a class="button" href="#">Read More</a>
-                </p>
-            </div>
-        </div>
-
-        <div class="card">
-            <i class="fa-regular fa-bell"></i>
-            <h5>Web Development</h5>
-            <div class="pra">
-               <p>Every website should be built with tow primary goals: Firstly, it needs
-                to work across all devices. Secondly, it needs to be fast as possible</p> 
-
-                <p style="text-align: center;">
-                    <a class="button" href="#">Read More</a>
-               </p>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!--Contact Me-->
-<div class="contact-me">
-    <p>Let Me Get You A beautiful Website.</p>
-    <a class="button-two" href="#">Hire Me</a>
-</div>
-
-<!--footer start-->
-<footer>
-    <p>Md Nahidul Islam</p>
-    <p>For more HTML, CSS, and coding tutorial - please click on the link below to visit my facebook page</p>
-    <div class="Social">
-        <a href="https://www.facebook.com/Nahidul.Islam.337/"><i class="fa-brands fa-facebook"></i></a>
-        <a href="#"><i class="fa-brands fa-instagram"></i></a>
-        <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
-    </div>
-    <p class="end"><i class="fa-regular fa-copyright"></i>CopyRight by Md Nahidul Islam</p>
-</footer>
 </body>
+<footer>
+  <div id="copyright">
+    <p>© 2023 Your Company. All rights reserved.</p>
+    <div id="nd">
+      <h3>Proxy Server</h3>
+      <div>
+
+      </div>
+    </div>
+  </div>
+</footer>
+
 </html>
