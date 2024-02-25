@@ -1,13 +1,16 @@
 function copyText(button) {
   var textBoxContainer = button.parentNode;
-  var sourceText = textBoxContainer.querySelector('input[type="text"]:nth-child(odd)');
-  var targetText = textBoxContainer.querySelector('input[type="text"]:nth-child(even)');
-
-
+  var sourceText = textBoxContainer.querySelector('input[type="text"]');
   sourceText.select();
   document.execCommand("copy");
   sourceText.setSelectionRange(0, 0);
-  targetText.focus();
+  alert("Text Copied: " + sourceText.value);
+
+  // Highlight the copied text for 30 seconds
+  sourceText.classList.add('highlight');
+  setTimeout(function() {
+    sourceText.classList.remove('highlight');
+  }, 30000);
 }
 
 function addTextBox() {
@@ -15,57 +18,50 @@ function addTextBox() {
   var textboxContainer = document.createElement('div');
   textboxContainer.classList.add('textbox-container');
 
-  var input1 = document.createElement('input');
-  input1.setAttribute('type', 'text');
-  input1.setAttribute('placeholder', 'Type or paste text here');
+  var input = document.createElement('input');
+  input.setAttribute('type', 'text');
+  input.setAttribute('placeholder', 'Type or paste text here');
 
   var button = document.createElement('button');
   button.textContent = 'Copy to Clipboard';
   button.setAttribute('onclick', 'copyText(this)');
 
-  var input2 = document.createElement('input');
-  input2.setAttribute('type', 'text');
-  input2.setAttribute('placeholder', 'Paste here');
-
-  textboxContainer.appendChild(input1);
+  textboxContainer.appendChild(input);
   textboxContainer.appendChild(button);
-  textboxContainer.appendChild(input2);
 
   container.insertBefore(textboxContainer, container.lastElementChild);
 }
 
 function exportData() {
-  var textArray = [];
+  var textToExport = "";
   var inputs = document.querySelectorAll('input[type="text"]');
   inputs.forEach(function(input) {
-    textArray.push(input.value);
+    textToExport += input.value + "\n";
   });
-  var textToSave = textArray.join('\n');
-
-  var blob = new Blob([textToSave], { type: 'text/plain' });
+  var blob = new Blob([textToExport], { type: 'text/plain' });
+  var url = URL.createObjectURL(blob);
   var a = document.createElement('a');
-  var url = window.URL.createObjectURL(blob);
   a.href = url;
-  a.download = 'data.txt';
+  a.download = 'text_data.txt';
   document.body.appendChild(a);
   a.click();
-  window.URL.revokeObjectURL(url);
+  document.body.removeChild(a);
 }
 
 function importData(event) {
   var file = event.target.files[0];
   var reader = new FileReader();
-  reader.onload = function(event) {
-    var importedText = event.target.result;
-    var textArray = importedText.split('\n');
+  reader.onload = function(e) {
+    var text = e.target.result;
+    var lines = text.split('\n');
     var inputs = document.querySelectorAll('input[type="text"]');
-    textArray.forEach(function(text, index) {
+    lines.forEach(function(line, index) {
       if (inputs[index]) {
-        inputs[index].value = text;
+        inputs[index].value = line;
       } else {
         addTextBox();
         inputs = document.querySelectorAll('input[type="text"]');
-        inputs[index].value = text;
+        inputs[index].value = line;
       }
     });
   };
